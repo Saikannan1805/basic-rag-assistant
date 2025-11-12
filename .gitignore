@@ -205,3 +205,13 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+
+# Supabase keys and environment configs
+backend/.env
+.env
+
+# Temporary outputs
+backend/data/
+outputs/
+logs/
