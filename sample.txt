@@ -1,0 +1,18 @@
+Tennis is a racket sport that originated in England in the late 19th century.
+It is played between two players (singles) or two teams of two players (doubles).
+Players use rackets to hit a felt-covered rubber ball over a net into the opponent's court.
+
+A player scores a point when the opponent fails to return the ball within the prescribed boundaries.
+The sport is governed internationally by the International Tennis Federation (ITF).
+
+The four major tennis tournaments, also known as the Grand Slam events, are:
+- The Australian Open
+- The French Open (Roland Garros)
+- Wimbledon
+- The US Open
+
+A standard tennis match is played in best-of-three or best-of-five sets.
+Each set consists of games, and each game begins with a serve.
+Tennis is known for its scoring system: love (0), 15, 30, 40, and game.
+
+Famous tennis players include Roger Federer, Rafael Nadal, Novak Djokovic, and Serena Williams.
