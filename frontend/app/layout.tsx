@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
   title: "Basic RAG Assistant",
@@ -14,6 +15,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-screen antialiased bg-[#0b0c0f] text-white">
         {children}
+        <Analytics />
       </body>
     </html>
   );
