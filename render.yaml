@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: basic-rag-assistant-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+      - key: EMBED_MODEL
+        value: text-embedding-3-small
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: CHUNK_SIZE
+        value: "1200"
+      - key: CHUNK_OVERLAP
+        value: "200"
+      - key: TOP_K
+        value: "8"
+      - key: SIM_THRESHOLD
+        value: "0.25"
+      - key: USE_FAKE_EMBEDDINGS
+        value: "false"
+      - key: USE_OFFLINE_ANSWER
+        value: "false"
+      - key: ALLOWED_ORIGINS
+        sync: false
