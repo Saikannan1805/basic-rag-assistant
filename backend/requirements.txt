@@ -3,7 +3,9 @@ uvicorn[standard]==0.30.6
 pydantic==2.8.2
 python-multipart==0.0.9
 openai==1.52.2
+anthropic>=0.40.0
 pypdf==5.0.1
 requests==2.32.3
 supabase==2.6.0
 python-dotenv==1.0.1
+pymupdf
