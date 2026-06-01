@@ -1,21 +1,35 @@
-# Basic RAG Assistant
+# RAG Assistant
 
-A full-stack RAG (Retrieval-Augmented Generation) app. Upload PDFs, TXT files, or paste a URL — then ask questions and get answers grounded in your documents, with source citations and a confidence indicator.
+Upload a PDF, TXT file, or any URL — then chat with it. Get answers straight from your documents, with citations and a confidence score on every response.
 
-**Stack:** FastAPI · OpenAI · Supabase (pgvector) · Next.js 14
-
----
-
-## Prerequisites
-
-- Python 3.11+
-- Node.js 18+
-- A [Supabase](https://supabase.com) project with `pgvector` enabled and the `documents` / `chunks` tables set up
-- An OpenAI API key
+**Live demo:** https://rag-assist-system.vercel.app
+**API docs:** https://basic-rag-assistant.onrender.com/docs
 
 ---
 
-## Backend
+## What it does
+
+1. **Upload** a document or paste a URL
+2. **Ask** anything about it in the chat
+3. **Get** a streamed answer with the exact sources it used
+
+---
+
+## Tech stack
+
+| Layer | Tech |
+|---|---|
+| Frontend | Next.js 14, TypeScript, Tailwind CSS |
+| Backend | Python, FastAPI |
+| AI | OpenAI (embeddings + GPT-4o-mini) |
+| Database | Supabase (PostgreSQL + pgvector) |
+| Deployment | Vercel (frontend), Render (backend) |
+
+---
+
+## Run locally
+
+### 1. Backend
 
 ```bash
 cd backend
@@ -24,24 +38,13 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Create `backend/.env`:
+Create a `backend/.env` file:
 
 ```ini
 OPENAI_API_KEY=sk-...
 SUPABASE_URL=https://your-project.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
-
 ALLOWED_ORIGINS=http://localhost:3000
-CHUNK_SIZE=1200
-CHUNK_OVERLAP=200
-TOP_K=8
-SIM_THRESHOLD=0.25
-EMBED_MODEL=text-embedding-3-small
-GEN_MODEL=gpt-4o-mini
-
-# Set to 1 to skip real OpenAI calls during local development
-USE_FAKE_EMBEDDINGS=0
-USE_OFFLINE_ANSWER=0
 ```
 
 Start the server:
@@ -50,18 +53,14 @@ Start the server:
 uvicorn app.main:app --reload --port 8000
 ```
 
-API docs available at `http://127.0.0.1:8000/docs`
-
----
-
-## Frontend
+### 2. Frontend
 
 ```bash
 cd frontend
 npm install
 ```
 
-Create `frontend/.env.local`:
+Create a `frontend/.env.local` file:
 
 ```ini
 NEXT_PUBLIC_API_BASE=http://127.0.0.1:8000
@@ -77,21 +76,12 @@ Open `http://localhost:3000` in your browser.
 
 ---
 
-## How it works
+## API endpoints
 
-1. **Ingest** — Upload a PDF/TXT or paste a URL. The backend extracts text, splits it into overlapping chunks, embeds each chunk with OpenAI, and stores everything in Supabase.
-2. **Retrieve** — When you ask a question, the query is embedded and the top-K most similar chunks are fetched via cosine similarity (`match_chunks` RPC).
-3. **Synthesize** — The retrieved chunks are passed to GPT-4o-mini along with your conversation history to produce a streamed answer with citations and a relevance score.
-
----
-
-## API reference
-
-| Method | Path | Description |
-|--------|------|-------------|
-| `POST` | `/ingest` | Upload a file (`file`) or URL (`url` form field) |
-| `POST` | `/ask` | Non-streaming answer |
-| `POST` | `/ask/stream` | Server-sent events stream |
-| `GET`  | `/library` | List ingested documents |
-| `GET`  | `/library/{id}/chunks` | View raw chunks for a document |
-| `DELETE` | `/library/{id}` | Delete a document and its chunks |
+| Method | Endpoint | What it does |
+|---|---|---|
+| POST | `/ingest` | Upload a file or URL |
+| POST | `/ask/stream` | Ask a question (streamed response) |
+| GET | `/library` | List all uploaded documents |
+| GET | `/library/{id}/chunks` | View chunks for a document |
+| DELETE | `/library/{id}` | Delete a document |
