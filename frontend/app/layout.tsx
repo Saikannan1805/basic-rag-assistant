@@ -2,7 +2,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
-  title: "Basic RAG Assistant",
+  title: "RAG Assistant",
   description: "Ask questions over your uploaded knowledge",
 };
 

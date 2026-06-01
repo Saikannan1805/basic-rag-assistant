@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Background -->
+  <rect width="32" height="32" rx="7" fill="#0D0D0F"/>
+  <!-- Left page (blue) -->
+  <path d="M6 12 C6 10.3 7.3 9.2 8.7 9.5 L14.5 10.8 L14.5 23.5 L8.7 22.2 C7.3 21.9 6 20.8 6 19.1 Z" fill="#3B82F6" opacity="0.9"/>
+  <!-- Right page (purple) -->
+  <path d="M17.5 10.8 L23.3 9.5 C24.7 9.2 26 10.3 26 12 L26 19.1 C26 20.8 24.7 21.9 23.3 22.2 L17.5 23.5 Z" fill="#7C3AED" opacity="0.9"/>
+  <!-- Spine -->
+  <line x1="16" y1="10.8" x2="16" y2="23.5" stroke="#93C5FD" stroke-width="1.2" opacity="0.5"/>
+  <!-- Neural node -->
+  <circle cx="16" cy="5.5" r="2.2" fill="#60A5FA"/>
+  <circle cx="16" cy="5.5" r="3.6" fill="none" stroke="#3B82F6" stroke-width="0.7" opacity="0.35"/>
+  <!-- Connectors: node to book -->
+  <line x1="14.8" y1="7.4" x2="13.2" y2="10.8" stroke="#60A5FA" stroke-width="0.9" opacity="0.45"/>
+  <line x1="17.2" y1="7.4" x2="18.8" y2="10.8" stroke="#7C3AED" stroke-width="0.9" opacity="0.45"/>
+</svg>
